@@ -41,7 +41,18 @@ lint-test-job:
     - echo "Linting code... This will take about 10 seconds."
     - sleep 10
     - echo "No lint issues found."
-
+# Run all tests
+test-all:
+  stage: test-all
+  script:
+    - npx playwright test
+  artifacts:
+    when: always
+    paths:
+      - test-results/
+    reports:
+      junit: test-results/**/*.xml
+      
 # Run "Submit form successfully" test 5 times
 test-submit-form:
   stage: test-specific
@@ -54,17 +65,7 @@ test-submit-form:
     reports:
       junit: test-results/**/*.xml
 
-# Run all tests
-test-all:
-  stage: test-all
-  script:
-    - npx playwright test
-  artifacts:
-    when: always
-    paths:
-      - test-results/
-    reports:
-      junit: test-results/**/*.xml
+
 
 # Deploy job
 deploy-job:
