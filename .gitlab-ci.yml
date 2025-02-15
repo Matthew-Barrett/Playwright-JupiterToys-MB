@@ -1,0 +1,77 @@
+stages:
+  - build
+  - test
+  - test-specific
+  - test-all
+  - deploy
+
+variables:
+  NODEJS_VERSION: "18"
+  TEST_NAME: "Submit form successfully"
+  REPEAT_COUNT: "5"
+
+default:
+  image: node:${NODEJS_VERSION}
+  before_script:
+    - npm install
+    - npx playwright install
+
+cache:
+  paths:
+    - node_modules/
+    - ~/.cache/ms-playwright/
+
+# Build job
+build-job:
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+
+# Unit test job
+unit-test-job:
+  stage: test
+  script:
+    - echo "Running unit tests... This will take about 60 seconds."
+    - sleep 60
+    - echo "Code coverage is 90%"
+
+# Lint test job
+lint-test-job:
+  stage: test
+  script:
+    - echo "Linting code... This will take about 10 seconds."
+    - sleep 10
+    - echo "No lint issues found."
+
+# Run specific test 5 times
+test-specific:
+  stage: test-specific
+  script:
+    - npx playwright test --grep "${TEST_NAME}" --repeat-each ${REPEAT_COUNT} --workers=1
+  artifacts:
+    when: always
+    paths:
+      - test-results/
+    reports:
+      junit: test-results/**/*.xml
+
+# Run all tests
+test-all:
+  stage: test-all
+  script:
+    - npx playwright test
+  artifacts:
+    when: always
+    paths:
+      - test-results/
+    reports:
+      junit: test-results/**/*.xml
+
+# Deploy job
+deploy-job:
+  stage: deploy
+  environment: production
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
