@@ -7,8 +7,6 @@ stages:
 
 variables:
   NODEJS_VERSION: "18"
-  TEST_NAME: "Submit form successfully"
-  REPEAT_COUNT: "5"
 
 default:
   image: node:${NODEJS_VERSION}
@@ -44,11 +42,11 @@ lint-test-job:
     - sleep 10
     - echo "No lint issues found."
 
-# Run specific test 5 times
-test-specific:
+# Run "Submit form successfully" test 5 times
+test-submit-form:
   stage: test-specific
   script:
-    - npx playwright test --grep "${TEST_NAME}" --repeat-each ${REPEAT_COUNT} --workers=1
+    - npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1
   artifacts:
     when: always
     paths:
