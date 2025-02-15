@@ -45,19 +45,6 @@ export class ContactPage {
     async getMessageError(): Promise<string> {
         return (await this.page.locator(LocatorProperties.messageError).innerText()) ?? "";
     }
-/*        getForenameError(): Locator {
-            return this.page.locator(LocatorProperties.forenameError); // Adjust selector if necessary
-          }
-        
-          getEmailError(): Locator {
-            return this.page.locator(LocatorProperties.emailError); // Adjust selector if necessary
-          }
-        
-          getMessageError(): Locator {
-            return this.page.locator(LocatorProperties.messageError); // Adjust selector if necessary
-          }
-
-          */
 
     async getSuccessMessage(): Promise<string> {
         return (await this.page.locator(LocatorProperties.successMessage).innerText()) ?? "";

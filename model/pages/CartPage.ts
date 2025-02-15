@@ -41,38 +41,37 @@ async getTotalPrice(): Promise<number> {
   return new Table(this.page.locator('.cart-items'));
 }
 
-// ✅ General method to get a value from the table based on Item title and column name
+
 private async getTableValue(title: string, columnName: string): Promise<Locator> {
   return (await this.getTable()).getValue('Item', title, columnName);
 }
 
-// ✅ Get price from the cart by item title
+
 async getPrice(title: string): Promise<number> {
   const element = await this.getTableValue(title, 'Price');
   const priceString = await element.innerText();
   return this.parsePrice(priceString);
 }
 
-// ✅ Get quantity from the cart by item title
+
 async getQuantity(title: string): Promise<number> {
   const element = await this.getTableValue(title, 'Quantity');
   const quantityString = await element.locator('input').getAttribute('value') as string;
   return parseInt(quantityString, 10);
 }
 
-// ✅ Get subtotal from the cart by item title
 async getSubtotal(title: string): Promise<number> {
   const element = await this.getTableValue(title, 'Subtotal');
   const subtotalString = await element.innerText();
   return this.parsePrice(subtotalString);
 }
 
-// ✅ Helper method to parse price and remove unwanted characters (like $ or commas)
+
 private parsePrice(priceString: string): number {
   return Number.parseFloat(priceString.replace(new RegExp('[^0-9\\.]+'), ''));
 }
 
-// ✅ Get total price for the cart (all products)
+
 async getTotalPrice(): Promise<number> {
   const totalElement = await this.page.locator('.total-price');
   const totalText = await totalElement.innerText();
@@ -123,14 +122,13 @@ export class CartPage {
     return Number.parseInt(quantityText ?? '0');
   }
 
-  // Get the subtotal of the product in the cart row
   async getProductSubtotal(productName: string): Promise<number> {
     const productRow = await this.getRowByProductName(productName);
     const subtotalText = await productRow.locator('td:nth-of-type(4)').textContent();
     return parseFloat(subtotalText?.replace('$', '') ?? '0');
   }
 
-  // Verify that the subtotal equals quantity * price for the given product
+
   async verifyProductSubtotal(productName: string): Promise<boolean> {
     const price = await this.getProductPrice(productName);
     const quantity = await this.getProductQuantity(productName);
@@ -140,7 +138,7 @@ export class CartPage {
   }
 }
 
-// Get the cart table
+
 /*private async getTable(): Promise<Table> {
   return new Table(this.page.locator('.cart-items')); // Adjust locator to your cart table
 }
