@@ -57,7 +57,7 @@ test-all:
 test-submit-form:
   stage: test-specific
   script:
-    - npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1
+    - npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=5
   artifacts:
     when: always
     paths:
