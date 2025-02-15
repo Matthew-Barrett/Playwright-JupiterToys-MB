@@ -12,6 +12,7 @@ test.describe('Contact Form Tests', () => {
     });
 
     test('Verify required field errors', async ({ page, context }) => {
+        const homePage = new HomePage(page);
         const contactPage = await homePage.goToContact();
         await contactPage.submitForm();
         expect(await contactPage.getForenameError()).toContain(DataProperties.foreNameError);
