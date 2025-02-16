@@ -3,13 +3,13 @@ import { HomePage } from '../model/pages/homePage';
 import { DataProperties } from '../properties/dataProperties.ts';
 
 
-/*test.describe('Contact Form Tests', () => {
+test.describe('Contact Form Tests', () => {
     let homePage: HomePage;
 
     test.beforeEach(async ({ page }) => {
         homePage = new HomePage(page);
         await homePage.navigateToHomePage();
-    });*/
+    })
 
     test('Verify required field errors', async ({ page, context }) => {
         const homePage = new HomePage(page);
@@ -38,4 +38,4 @@ import { DataProperties } from '../properties/dataProperties.ts';
         expect(successMessage).toContain('Thanks Forename, we appreciate your feedback.');
     });
 
-//});
+});
