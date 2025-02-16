@@ -33,7 +33,6 @@ export class ContactPage {
         await this.page.locator(LocatorProperties.contactSubmitButton).click();
     }
 
-    // **New Methods to Get Individual Error Messages**
     async getForenameError(): Promise<string> {
         return (await this.page.locator(LocatorProperties.forenameError).innerText()) ?? "";
     }
