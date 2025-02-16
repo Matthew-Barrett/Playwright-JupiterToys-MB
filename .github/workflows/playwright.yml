@@ -19,11 +19,11 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run All Playwright Tests
-      run: npx playwright test --reporter=html --output-dir=playwright-results/all-tests
+      run: npx playwright test --reporter=html --output-dir=test-results/all-tests
     - name: Run Specific Test 5 Times
-      run: npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1 --reporter=html --output-dir=playwright-results/specific-test
+      run: npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1 --reporter=html --output-dir=test-results/specific-test
     - name: Merge Playwright Reports
-      run: npx playwright merge-reports --reporter=html playwright-results/all-tests playwright-results/specific-test
+      run: npx playwright merge-reports --reporter=html test-results/all-tests test-results/specific-test
     - name: Upload Playwright HTML Report
       uses: actions/upload-artifact@v4
       with:
