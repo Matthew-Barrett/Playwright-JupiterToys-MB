@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../model/pages/homePage';
+import { HomePage } from '../model/pages/HomePage';
 import { DataProperties } from '../properties/dataProperties.ts';
 
 

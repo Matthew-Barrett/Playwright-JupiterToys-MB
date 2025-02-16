@@ -2,9 +2,9 @@ import { type Locator, type Page, } from '@playwright/test';
 import { UrlProperties } from '../../properties/urlProperties.ts';
 import { LocatorProperties } from '../../properties/locatorProperties.ts';
 import { LoginDialog } from './LoginDialog.ts';
-import { ContactPage } from './contactPage.ts';
+import { ContactPage } from './ContactPage.ts';
 import { ShopPage } from './ShopPage.ts';
-import { CartPage } from './cartPage.ts';
+import { CartPage } from './CartPage.ts';
 
 export class HomePage {
     private page: Page;
