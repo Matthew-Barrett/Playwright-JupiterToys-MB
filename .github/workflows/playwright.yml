@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test --reporter=html=playwright-report
+      run: npx playwright test 
     - name: Run specific test 5 times
       run: npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1
     - uses: actions/upload-artifact@v4
