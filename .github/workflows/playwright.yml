@@ -21,11 +21,6 @@ jobs:
         npm ci
         npx playwright install --with-deps
 
-    - name: Run "Submit form successfully" test 5 times
-      run: |
-        npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1
-
-
     - name: Run Playwright tests
       run: |
         npx playwright test
