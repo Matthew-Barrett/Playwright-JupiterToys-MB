@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { ShopPage } from '../model/pages/ShopPage';
 import { CartPage2 } from '../model/pages/CartPage2';
-import { HomePage } from '../model/pages/homePage';
+import { HomePage } from '../model/pages/HomePage';
 
 
 test.describe('Contact Form Tests', () => {

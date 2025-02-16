@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                    
+    "module": "ESNext",                 
+    "moduleResolution": "node",         
+    "strict": true,                    
+    "esModuleInterop": true,            
+    "skipLibCheck": true,               
+    "forceConsistentCasingInFileNames": false, 
+    "baseUrl": ".",                     
+    "paths": {
+      "*": ["node_modules/*", "src/*"]  
+    },
+    "outDir": "./dist",                 
+    "allowJs": true,                   
+    "noEmit": false                    
+  },
+  "include": [
+    "tests/**/*.ts",                   
+    "src/**/*.ts"                        
+  ],
+  "exclude": [
+    "node_modules",                     
+    "dist"                               
+  ]
+}
