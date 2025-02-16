@@ -4,7 +4,6 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-
 jobs:
   test:
     timeout-minutes: 60
@@ -18,19 +17,13 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-
-      - name: Run all Playwright tests
-        run: npx playwright test --reporter=blob --output-dir=playwright-reports/
-
+      - name: Run Playwright tests
+        run: npx playwright test
       - name: Run specific test 5 times
-        run: npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1 --reporter=blob --output-dir=playwright-reports/
-
-      - name: Merge test reports
-        run: npx playwright merge-reports playwright-reports/ --reporter=html
-
-      - name: Upload Playwright HTML Report
-        uses: actions/upload-artifact@v4
+        run: npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
-          name: playwright-html-report
+          name: playwright-report
           path: playwright-report/
           retention-days: 30
