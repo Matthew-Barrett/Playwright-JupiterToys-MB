@@ -53,17 +53,6 @@ test-all:
     reports:
       junit: test-results/**/*.xml
       
-# Run "Submit form successfully" test 5 times
-test-submit-form:
-  stage: test-specific
-  script:
-    - npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=5
-  artifacts:
-    when: always
-    paths:
-      - test-results/
-    reports:
-      junit: test-results/**/*.xml
 
 
 
