@@ -22,18 +22,13 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Prepare report directory
-      run: mkdir -p playwright-reports
+      run: mkdir -p playwright-reports/all-tests playwright-reports/specific-test playwright-report
 
     - name: Run All Playwright Tests
-      run: npx playwright test --reporter=html
-    - name: Store All Tests Report
-      run: mv playwright-report/ playwright-reports/all-tests
+      run: npx playwright test --reporter=html --output=playwright-reports/all-tests
 
     - name: Run Specific Test 5 Times
-      run: npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1 --reporter=html
-    - name: Store Specific Test Report
-      run: mv playwright-report/ playwright-reports/specific-test
-
+      run: npx playwright test --grep "Submit form successfully" --repeat-each 5 --workers=1 --reporter=html --output=playwright-reports/specific-test
 
     - name: Merge Playwright Reports
       run: |
