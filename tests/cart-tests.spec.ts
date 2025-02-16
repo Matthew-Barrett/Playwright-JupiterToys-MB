@@ -4,7 +4,7 @@ import { CartPage2 } from '../model/pages/CartPage2';
 import { HomePage } from '../model/pages/HomePage';
 
 
-test.describe('Contact Form Tests', () => {
+test.describe('Shop and Cart Test', () => {
   let homePage: HomePage;
 
   test.beforeEach(async ({ page }) => {
@@ -38,8 +38,6 @@ test.describe('Contact Form Tests', () => {
     expect(cartFluffyBunnyPrice).toEqual(fluffyBunnyPrice);
     const cartStuffedFrogPrice = (await cartPage.getProductPrice('Stuffed Frog'));
     expect(cartStuffedFrogPrice).toEqual(stuffedFrogPrice);
-
-
 
     const items = [
       { name: 'Valentine Bear', quantity: 3 },
