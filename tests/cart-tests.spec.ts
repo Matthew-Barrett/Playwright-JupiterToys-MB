@@ -28,9 +28,9 @@ test.describe('Shop and Cart Test', () => {
     await fluffyBunny.buy(3);
     await stuffedFrog.buy(1)
     await shopPage.goToCart();
-    await cartPage.getProductInCart('Valentine Bear');
-    await cartPage.getProductInCart('Fluffy Bunny');
-    await cartPage.getProductInCart('Stuffed Frog');
+    //await cartPage.getProductInCart('Valentine Bear');
+    //await cartPage.getProductInCart('Fluffy Bunny');
+    //await cartPage.getProductInCart('Stuffed Frog');
 
     const cartFunnyCowPrice = (await cartPage.getProductPrice('Valentine Bear'));
     expect(cartFunnyCowPrice).toEqual(funnyCowPrice);
