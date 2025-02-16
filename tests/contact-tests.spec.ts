@@ -3,13 +3,13 @@ import { HomePage } from '../model/pages/homePage';
 import { DataProperties } from '../properties/dataProperties.ts';
 
 
-test.describe('Contact Form Tests', () => {
+/*test.describe('Contact Form Tests', () => {
     let homePage: HomePage;
 
     test.beforeEach(async ({ page }) => {
         homePage = new HomePage(page);
         await homePage.navigateToHomePage();
-    });
+    });*/
 
     test('Verify required field errors', async ({ page, context }) => {
         const homePage = new HomePage(page);
@@ -28,6 +28,7 @@ test.describe('Contact Form Tests', () => {
 
 
     test('Submit form successfully', async ({ page, context }) => {
+        const homePage = new HomePage(page);
         const contactPage = await homePage.goToContact();
         await contactPage.enterForename('Forename');
         await contactPage.enterEmail('email@email.com');
@@ -37,4 +38,4 @@ test.describe('Contact Form Tests', () => {
         expect(successMessage).toContain('Thanks Forename, we appreciate your feedback.');
     });
 
-});
+//});
