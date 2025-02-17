@@ -5,10 +5,6 @@ import { LocatorProperties } from '../../properties/locatorProperties.ts';
 export class ContactPage {
     private page: Page;
 
-    /*(page: Page, context: BrowserContext) {
-        super(page, context);
-
-    }*/
     constructor(page: Page) {
         this.page = page;
     }

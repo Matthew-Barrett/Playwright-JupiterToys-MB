@@ -4,7 +4,7 @@ import { LocatorProperties } from '../../properties/locatorProperties.ts';
 import { LoginDialog } from './LoginDialog.ts';
 import { ContactPage } from './ContactPage.ts';
 import { ShopPage } from './ShopPage.ts';
-import { CartPage } from './CartPage.ts';
+import { CartPage } from './cartPage.ts';
 
 export class HomePage {
     private page: Page;

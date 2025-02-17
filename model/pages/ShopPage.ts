@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { CartPage2 } from './CartPage2.ts';
+import { CartPage } from './cartPage';
 import { Product } from './Product.ts';
 
 export class ShopPage {
@@ -17,6 +17,6 @@ export class ShopPage {
 
   async goToCart() {
     await this.page.locator('#nav-cart > a').click();
-    return new CartPage2(this.page);
+    return new CartPage(this.page);
   }
 }

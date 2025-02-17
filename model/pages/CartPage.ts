@@ -1,9 +1,8 @@
-
 import { Locator, Page } from '@playwright/test';
 import { Product } from './Product';
 
-export class CartPage2 {
-  readonly page: Page;
+export class CartPage {
+  private page: Page;
 
   constructor(page: Page) {
     this.page = page;

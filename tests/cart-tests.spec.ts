@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ShopPage } from '../model/pages/ShopPage';
-import { CartPage2 } from '../model/pages/CartPage2';
+import { CartPage } from '../model/pages/CartPage';
 import { HomePage } from '../model/pages/HomePage';
 
 
@@ -14,7 +14,7 @@ test.describe('Shop and Cart Test', () => {
 
   test('Buy multiple products with different quantities and verify totals', async ({ page }) => {
     const homePage = new HomePage(page);
-    const cartPage = new CartPage2(page);
+    const cartPage = new CartPage(page);
     const shopPage = new ShopPage(page);
     await homePage.navigateToHomePage();
     await homePage.goToShop();
