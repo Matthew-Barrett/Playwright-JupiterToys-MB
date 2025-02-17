@@ -1,12 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../model/pages/HomePage';
+import { test, expect, chromium } from '@playwright/test';
+import { HomePage } from '../model/pages/homePage';
 import { DataProperties } from '../properties/dataProperties.ts';
 
 
 test.describe('Contact Form Tests', () => {
     let homePage: HomePage;
 
-    test.beforeEach(async ({ page }) => {
+    test.beforeEach(async ({ page, browser }) => {
         homePage = new HomePage(page);
         await homePage.navigateToHomePage();
     })
@@ -27,15 +27,24 @@ test.describe('Contact Form Tests', () => {
     });
 
 
-    test('Submit form successfully', async ({ page, context }) => {
-        const homePage = new HomePage(page);
-        const contactPage = await homePage.goToContact();
-        await contactPage.enterForename('Forename');
-        await contactPage.enterEmail('email@email.com');
-        await contactPage.enterMessage('Test Message');
-        await contactPage.submitForm();
-        const successMessage = await contactPage.getSuccessMessage();
-        expect(successMessage).toContain('Thanks Forename, we appreciate your feedback.');
+    test.describe('Submit form successfully - Repeated 5 Times', () => {
+        for (let i = 0; i < 5; i++) {
+            test(`Iteration ${i + 1}: Submit form successfully`, async ({ browser }) => {
+                const context = await browser.newContext();
+                const page = await context.newPage();
+                const homePage = new HomePage(page);
+                await homePage.navigateToHomePage();
+                const contactPage = await homePage.goToContact();
+                await contactPage.enterForename('Forename');
+                await contactPage.enterEmail('email@email.com');
+                await contactPage.enterMessage('Test Message');
+                await contactPage.submitForm();
+                await page.waitForSelector('.popup', { state: 'hidden' });
+                const successMessage = await contactPage.getSuccessMessage();
+                expect(successMessage).toContain('Thanks Forename, we appreciate your feedback.');
+                await context.close();
+            });
+        }
     });
 
 });

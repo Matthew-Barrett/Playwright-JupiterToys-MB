@@ -18,6 +18,7 @@ export class HomePage {
 
     async navigateToHomePage() {
         await this.page.goto(UrlProperties.BASE_URL);
+        return new HomePage(this.page);
     }
 
 

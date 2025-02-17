@@ -42,12 +42,12 @@ export class ContactPage {
     }
 
     async getSuccessMessage(): Promise<string> {
-        return (await this.page.locator(LocatorProperties.successMessage).innerText()) ?? "";
+        return (await this.page.locator(LocatorProperties.successMessage).innerText());
     }
 
-    async goBackButton() {
+    /*async goBackButton() {
         return this.page.locator('button:has-text("Back")');
-    }
+    }*/
 
     async isForenameErrorAbsent(): Promise<boolean> {
         return !(await this.page.locator(LocatorProperties.forenameError).isVisible());
