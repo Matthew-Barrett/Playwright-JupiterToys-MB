@@ -51,5 +51,7 @@ export class CartPage2 {
   private parsePrice(priceString: string): number {
     return parseFloat(priceString.replace(/[^\d.-]+/g, ''));
   }
+
+  
   
 }
