@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { ShopPage } from '../model/pages/ShopPage';
-import { CartPage } from '../model/pages/CartPage';
-import { HomePage } from '../model/pages/HomePage';
+import { CartPage } from '../model/pages/cartPage';
+import { HomePage } from '../model/pages/homePage';
 
 
 test.describe('Shop and Cart Test', () => {

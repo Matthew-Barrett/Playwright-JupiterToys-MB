@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { CartPage } from './CartPage';
+import { CartPage } from './cartPage';
 import { Product } from './Product.ts';
 
 export class ShopPage {
